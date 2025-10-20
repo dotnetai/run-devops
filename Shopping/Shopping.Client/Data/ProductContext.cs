@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace Shopping.Client.Data
 {
     /// <summary>
-    /// 
+    /// Hard coded static data
     /// </summary>
     public static class ProductContext
     {
