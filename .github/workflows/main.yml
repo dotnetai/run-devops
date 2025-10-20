@@ -13,23 +13,32 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-
+        
+      - name: Show folder structure (debug)
+        run: |
+          echo "Current directory:"
+          pwd
+          echo "Contents:"
+          ls -R
+          
       - name: Set up .NET 5
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '5.0.x'
 
       - name: Restore dependencies
-        run: dotnet restore
+        working-directory: Shopping/Shopping.Client
+        run: dotnet restore Shopping.Client.csproj
 
       - name: Build
-        run: dotnet publish -c Release -o ./publish
+        working-directory: Shopping/Shopping.Client
+        run: dotnet publish Shopping.Client.csproj -c Release -o ../../publish
 
       - name: Log in to Docker Hub
         run: echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
 
       - name: Build Docker image
-        run: docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/shoppingapp:latest .
+        run: docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/shoppingapp:latest -f Shopping/Shopping.Client/Dockerfile Shopping
 
       - name: Push Docker image
         run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/shoppingapp:latest
