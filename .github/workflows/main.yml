@@ -27,12 +27,12 @@ jobs:
           dotnet-version: '5.0.x'
 
       - name: Restore dependencies
-        working-directory: Shopping/ShoppingClient
-        run: dotnet restore ShoppingClient.csproj
+        working-directory: Shopping/Shopping.Client
+        run: dotnet restore Shopping.Client.csproj
 
       - name: Build
-        working-directory: Shopping/ShoppingClient
-        run: dotnet publish ShoppingClient.csproj -c Release -o ../../publish
+        working-directory: Shopping/Shopping.Client
+        run: dotnet publish Shopping.Client.csproj -c Release -o ../../publish
 
       - name: Log in to Docker Hub
         run: echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
