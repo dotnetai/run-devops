@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 namespace Shopping.Client.Data
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public static class ProductContext
     {
         public static readonly List<Product> Products = new List<Product>
