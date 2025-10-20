@@ -13,7 +13,14 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-
+        
+      - name: Show folder structure (debug)
+        run: |
+          echo "Current directory:"
+          pwd
+          echo "Contents:"
+          ls -R
+          
       - name: Set up .NET 5
         uses: actions/setup-dotnet@v4
         with:
