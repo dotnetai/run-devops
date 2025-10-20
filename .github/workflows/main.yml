@@ -27,11 +27,11 @@ jobs:
           dotnet-version: '5.0.x'
 
       - name: Restore dependencies
-        working-directory: Shopping/Shopping.Client
+        working-directory: src/Shopping.Client
         run: dotnet restore Shopping.Client.csproj
 
       - name: Build
-        working-directory: Shopping/Shopping.Client
+        working-directory: src/Shopping.Client
         run: dotnet publish Shopping.Client.csproj -c Release -o ../../publish
 
       - name: Log in to Docker Hub
