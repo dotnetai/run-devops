@@ -2,9 +2,7 @@
 using Microsoft.Extensions.Logging;
 using Shopping.API.Data;
 using Shopping.API.Models;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Shopping.API.Controllers
 {
